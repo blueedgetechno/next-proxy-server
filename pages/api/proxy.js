@@ -1,9 +1,7 @@
 const axios = require('axios')
 
-const regex = /\s+(href|src)=['"](.*?)['"]/g;
-
 const handler = async (req, res) => {
-  const { url } = req.query
+  const url = req.url.split('?url=').splice(1).join('')
   if (!url) return res.end('You need to specify url query parameter')
   
   try {
